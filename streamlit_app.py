@@ -117,7 +117,15 @@ with tab1:
             st.altair_chart(chart, use_container_width=True)
 
             if st.button("このプランをクラウドに保存する"):
-                save_plan(goal_name, target_amount, rec_savings, months, location, advice)
+                # 1. 保存したいデータを作る
+    　　　　　　　new_plan = {
+       　　　　　 "target_amount": 1000000,  # 変数を入れる
+        　　　　　"monthly_savings": 50000,  # 変数を入れる
+       　　　　　 "created_at": datetime.now().isoformat()
+    　　　　　　　　}
+    
+    # 2. Supabaseに送信する
+   　　　　　　　 response = supabase.table("plans").insert(new_plan).execute()
                 st.success("✅ 保存しました！「貯金実績の管理」タブを見てください。")
         else:
             st.error("現在の収支バランスでは貯金が難しいようです。")
