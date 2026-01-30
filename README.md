@@ -10,7 +10,7 @@
 ## 🚀 デモアプリ (Demo)
 以下のURLからブラウザ上でアプリを試すことができます。
 
-👉 **[アプリを起動する](https://share.streamlit.io/your-account/your-repo/main/app.py)**
+👉 **https://share.streamlit.io/your-account/your-repo/main/app.py**
 > **Note:** アプリがスリープ状態（画面が黒くなっている場合）のときは、画面中央の青い **「Yes, get this app back up!」** ボタンを押して起動してください。
 
 ## 🌟 主な機能 (Features)
