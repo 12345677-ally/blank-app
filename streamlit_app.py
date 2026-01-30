@@ -18,7 +18,7 @@ def init_supabase():
 supabase: Client = init_supabase()
 
 # --- ページ設定 ---
-st.set_page_config(page_title="パーソナル貯金プランナー Pro", page_icon="📈", layout="wide")
+st.set_page_config(page_title="パーソナル貯金プランナー ", page_icon="📈", layout="wide")
 
 # --- ロジック関数 ---
 def calculate_plan(income, rent, target_amount, location):
