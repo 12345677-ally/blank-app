@@ -176,4 +176,29 @@ with tab2:
                     st.subheader("💰 貯金を記録する")
                     with st.form(key=f"log_form_{plan['id']}"):
                         amount_in = st.number_input("今回貯金した金額 (円)", min_value=1, value=int(plan['monthly_savings']), step=1000, key=f"amt_{plan['id']}")
-                        memo_in = st.text_input("メモ (任意)", key=f"memo
+                        memo_in = st.text_input("メモ (任意)", key=f"memo_{plan['id']}")
+                        if st.form_submit_button("記録を追加"):
+                            save_log(plan['id'], amount_in, memo_in)
+                            st.rerun()
+
+                with c2:
+                    st.caption("プラン情報")
+                    st.write(f"月々の目標: ¥{plan['monthly_savings']:,}")
+                    try:
+                        date_str = plan['created_at'][:10]
+                    except:
+                        date_str = "-"
+                    st.write(f"開始日: {date_str}")
+                    
+                    if st.button("プランを削除", key=f"del_{plan['id']}"):
+                        delete_plan(plan['id'])
+                        st.rerun()
+
+                if logs:
+                    st.divider()
+                    st.caption("📜 これまでの履歴")
+                    df_logs = pd.DataFrame(logs)
+                    df_logs = df_logs.rename(columns={"amount": "金額", "created_at": "日時"})
+                    st.dataframe(df_logs, use_container_width=True)
+    else:
+        st.info("保存されたプランはありません。「新規プラン作成」タブで作ってみましょう！")
