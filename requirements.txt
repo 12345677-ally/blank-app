@@ -1,6 +1,6 @@
 streamlit
 pandas
-python-dateutil
-supabase
 altair
+supabase
+python-dateutil
 requests
